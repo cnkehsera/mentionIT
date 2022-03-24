@@ -186,3 +186,14 @@ body {
     .sticky + .content {
         padding-top: 102px;
     }
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    #myImg:hover {
+        mask-image: inherit;
+        opacity: 0.7;
+    }

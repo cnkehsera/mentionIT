@@ -9,16 +9,20 @@ using mentionIT.Data;
 using mentionIT.Models;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace mentionIT.Controllers
 {
     public class MealsController : Controller
     {
         private readonly mentionITContext _context;
+        private readonly IWebHostEnvironment WebHostEnvironment;
 
-        public MealsController(mentionITContext context)
+        public MealsController(mentionITContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            WebHostEnvironment = webHostEnvironment;
         }
         public IActionResult AccessDenied()
         {
@@ -83,7 +87,71 @@ namespace mentionIT.Controllers
         {
             return View();
         }
+        public IActionResult ImageAdd()
+        {
 
+            return View();
+        }
+        private bool HasImageExtension(string source)
+        {
+            if (source == null) { return false; }
+            return (
+                source.EndsWith(".png") ||
+                source.EndsWith(".PNG") ||
+                source.EndsWith(".jpeg") ||
+                source.EndsWith(".JPEG") ||
+                source.EndsWith(".gif") ||
+                source.EndsWith(".GIF") ||
+                source.EndsWith(".jpg") ||
+                source.EndsWith(".JPG"));
+        }
+        [HttpPost]
+        public IActionResult ImageAdd(MealViewModel vm)
+        {
+            string stringFileName = UploadFile(vm);
+            if (stringFileName == null)
+            {
+                return View("ImageAdd");
+            }
+            else
+            {
+                var meal = new Meal
+                {
+                    Name = vm.Name,
+                    MealImage = stringFileName
+                };
+                _context.Meal.Add(meal);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        private string UploadFile(MealViewModel vm)
+        {
+            string fileName = null;
+            if (vm.MealImage != null)
+            {
+                string uploadDir = Path.Combine(WebHostEnvironment.WebRootPath, "ImageForMeals");
+                fileName = Guid.NewGuid().ToString() + "-" + vm.MealImage.FileName;
+                bool compareExtension = HasImageExtension(fileName) /*stringFileName.ToString().Substring(stringFileName.Length -4).ToUpper()*/;
+                if (compareExtension == true)
+                {
+                    string filePath = Path.Combine(uploadDir, fileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        vm.MealImage.CopyTo(fileStream);
+
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid Extention File");
+                    return null;
+                }
+
+
+            }
+            return fileName;
+        }
         // POST: Meals/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

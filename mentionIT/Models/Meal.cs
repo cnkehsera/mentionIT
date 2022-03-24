@@ -13,6 +13,7 @@ namespace mentionIT.Models
         public int Likes { get; set; }
         public string Comments { get; set; }
         public string YLink { get; set; }
+        public string MealImage { get; set; }
 
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mentionIT.Data;
 
 namespace mentionIT.Migrations
 {
     [DbContext(typeof(mentionITContext))]
-    partial class mentionITContextModelSnapshot : ModelSnapshot
+    [Migration("20220324205445_MealImageAdded")]
+    partial class MealImageAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
