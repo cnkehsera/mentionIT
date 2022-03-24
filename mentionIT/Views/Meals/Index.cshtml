@@ -1,0 +1,37 @@
+﻿@inject SignInManager<IdentityUser> signInManager;
+@model IEnumerable<mentionIT.Models.Meal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    Layout = "~/Views/Shared/_Homepage_Layout.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="w3-row w3-padding-32 ws-black">
+        <div class="w3-content" style="max-width:1400px">
+            <div class="w3-col auto" style="padding:3%">
+                <div class="w3-hide-small w3-card-2 grey-color w3-round" style="padding:16px;">
+                    <h3> @Html.DisplayFor(modelItem => item.Name)</h3>
+                    <div class="w3-code notranslate orangered-border">
+                        @if (!signInManager.IsSignedIn(User))
+                        {
+                            <a asp-controller="Accounts" asp-action="login" asp-route-id="@item.Id">Details</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        }
+
+                    </div>
+                   @* <h6>Author Name: @Html.DisplayFor(modelItem => item.Author)</h6>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
