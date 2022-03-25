@@ -57,6 +57,13 @@
         <a asp-controller="Meals" asp-action="ImageAdd">Add Meal</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
+        <form method="get" asp-action="Index" style="float:right; padding-right:40px">
+            <p>
+                <input type="search" placeholder="Enter a meal" value="@ViewData["Getmeals"]" name="mealSearch"
+                       style="width: 500px;" />
+                <button value="Search" class="btn btn-primary">Search</button>/>
+            </p>
+        </form>
     </div>
     <div class="container" style="margin: auto 0%;">
         <main role="main" class="pb-3">

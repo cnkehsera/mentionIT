@@ -34,7 +34,20 @@ namespace mentionIT.Controllers
         {
             return View(await _context.Meal.ToListAsync());
         }
+        [HttpGet]
+        public async Task<IActionResult> Index(string mealSearch)
+        {
+            ViewData["Getmeals"] = mealSearch;
+            var mealquery = from x in _context.Meal select x;
 
+            if (!String.IsNullOrEmpty(mealSearch))
+            {
+                mealquery = mealquery.Where(x => x.Name.Contains(mealSearch));
+
+            }
+            //var meal = await mealquery.AsNoTracking().ToListAsync();
+            return View(await mealquery.AsNoTracking().ToListAsync());
+        }
         // GET: Meals/Details/5
         [Authorize]
         public async Task<IActionResult> Details(int? id, bool? changeLikes)
