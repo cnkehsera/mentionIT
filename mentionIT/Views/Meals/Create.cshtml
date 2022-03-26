@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Likes" class="control-label"></label>
-                <input asp-for="Likes" class="form-control"  />
+                <input asp-for="Likes" class="form-control" />
                 <span asp-validation-for="Likes" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,8 +38,15 @@
                 <span asp-validation-for="YLink" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="MealImage" class="control-label"></label>
+                <input type="file" asp-for="MealImage" accept="image/x-png,image/gif,image/jpeg" />
+                <span asp-validation-for="MealImage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>

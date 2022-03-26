@@ -39,7 +39,9 @@
                         }
                         else
                         {
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                           <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                           <br />
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         }
 
                     </div>

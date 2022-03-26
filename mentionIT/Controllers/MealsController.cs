@@ -87,7 +87,7 @@ namespace mentionIT.Controllers
                         int temp = tempLst.Count<LikesUserLink>();
                         LikesUserLink newRecord = new LikesUserLink { Id = default, Name = likeCookieName, Liked = true, MealId = meal.Id };
                         _context.Add(newRecord);
-                    }                 
+                    }
                 }
                 await _context.SaveChangesAsync();
             }
@@ -129,8 +129,14 @@ namespace mentionIT.Controllers
             else
             {
                 var meal = new Meal
-                {
+                {   
+
+                    Id = vm.Id,
                     Name = vm.Name,
+                    Cuisine = vm.Cuisine,
+                    Likes = vm.Likes,
+                    Comments = vm.Comments,
+                    YLink = vm.YLink,
                     MealImage = stringFileName
                 };
                 _context.Meal.Add(meal);
@@ -171,7 +177,7 @@ namespace mentionIT.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Cuisine,Likes,Comments,YLink")] Meal meal)
+        public async Task<IActionResult> Create([Bind("Id,Name,Cuisine,Likes,Comments,YLink")] Meal meal )
         {
             if (ModelState.IsValid)
             {

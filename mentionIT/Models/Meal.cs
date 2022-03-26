@@ -14,6 +14,5 @@ namespace mentionIT.Models
         public string Comments { get; set; }
         public string YLink { get; set; }
         public string MealImage { get; set; }
-
     }
 }

@@ -54,7 +54,14 @@
     </header>
     <div class="topnav" id="myHeader">
         <a class="active" href="#home">Home</a>
-        <a asp-controller="Meals" asp-action="Create">Add Meal</a>
+        @if (!signInManager.IsSignedIn(User))
+        {
+            <a asp-controller="Accounts" asp-action="login" >Add Meal</a>
+        }
+        else
+        {
+            <a asp-action="ImageAdd">Add Meal</a>
+        }
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <form method="get" asp-action="Index" style="float:right; padding-right:40px">

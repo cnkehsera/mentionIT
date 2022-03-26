@@ -134,6 +134,7 @@ body {
 .topnav {
     background-color: #2a3b2a;
     overflow: hidden;
+    z-index: 1;
 }
 
     /* Style the links inside the navigation bar */

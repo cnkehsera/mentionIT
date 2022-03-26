@@ -10,37 +10,43 @@
     <h4>Meal</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cuisine)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cuisine)
         </dd>
         <dt class="col-sm-2">
             @*@Html.DisplayNameFor(model => model.Likes)*@
             <a asp-action="Details" asp-controller="Meals" asp-route-id="@Model.Id" asp-route-changeLikes="true"><img src="~/Images/like.png" alt="like_img" width="40" height="40" /></a>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Likes)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Comments)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Comments)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.YLink)
         </dt>
-        <dd class="col-sm-10">            
+        <dd class="col-sm-10">
             <a href="@Html.DisplayFor(model => model.YLink)">@Html.DisplayFor(model => model.YLink)</a>
         </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MealImage)
+        </dd>*@
     </dl>
 </div>
 <div>
