@@ -198,3 +198,32 @@ body {
         mask-image: inherit;
         opacity: 0.7;
     }
+
+@media screen and (max-width: 600px) {
+    .search-container {
+        float: left;
+        
+    }
+
+    .topnav a, .topnav input, .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .aside-content{
+        display:none
+    }
+}
+aside{
+    margin-top:57px;
+    width:20%;
+    float:right;
+    border:2px solid black;
+}
+section{
+    width:80%;
+    float:left; 
+}

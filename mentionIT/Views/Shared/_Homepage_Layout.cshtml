@@ -43,20 +43,20 @@
             <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
         </div>
         <li class="w3-bar-item w3-button" id="my-nav-item">
-            <a class="nav-link text-dark" >Sample</a>
+            <a class="nav-link text-dark">Sample</a>
         </li>
         <li class="w3-bar-item w3-button" id="my-nav-item">
-            <a class="nav-link text-dark" >Sample</a>
+            <a class="nav-link text-dark">Sample</a>
         </li>
         <li class="w3-bar-item w3-button" id="my-nav-item">
-            <a class="nav-link text-dark" >Sample</a>
+            <a class="nav-link text-dark">Sample</a>
         </li>
     </header>
     <div class="topnav" id="myHeader">
         <a class="active" href="#home">Home</a>
         @if (!signInManager.IsSignedIn(User))
         {
-            <a asp-controller="Accounts" asp-action="login" >Add Meal</a>
+            <a asp-controller="Accounts" asp-action="login">Add Meal</a>
         }
         else
         {
@@ -64,15 +64,18 @@
         }
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
-        <form method="get" asp-action="Index" style="float:right; padding-right:40px">
-            <p>
-                <input type="search" placeholder="Enter a meal" value="@ViewData["Getmeals"]" name="mealSearch"
-                       style="width: 500px;" />
-                <button value="Search" class="btn btn-primary">Search</button>/>
-            </p>
-        </form>
+        <div class="search-container">
+            <div class="search-container">
+                <form method="get" asp-action="Index" style="float: right; padding-right: 40px;">
+                    <input type="text" placeholder="Search..." value="@ViewData["Getmeals"]" name="mealSearch"
+                           style="width: 500px; height: 55px;" />
+                    <button value="Search" class="btn btn-success">Search</button>/>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="container" style="margin: auto 0%;">
+
+    <div class="container" style="margin:auto">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

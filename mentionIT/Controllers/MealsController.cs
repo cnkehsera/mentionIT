@@ -43,7 +43,6 @@ namespace mentionIT.Controllers
             if (!String.IsNullOrEmpty(mealSearch))
             {
                 mealquery = mealquery.Where(x => x.Name.Contains(mealSearch));
-
             }
             //var meal = await mealquery.AsNoTracking().ToListAsync();
             return View(await mealquery.AsNoTracking().ToListAsync());
