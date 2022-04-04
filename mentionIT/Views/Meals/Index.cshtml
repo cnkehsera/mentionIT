@@ -10,24 +10,6 @@
 }
 
 <aside >
-    @*<h3 style="margin-left:25%; font-style:italic">Incoming Content!</h3>
-    <h5>Most Liked Meal</h5>
-    <div class="w3-hide-small w3-card-2 grey-color w3-round" style="padding:16px;">
-        <p>Meal Name</p>
-        <img src="~/Images/NoImage.jpg" class="modal-content" id="myImg" style="width: 100%; max-width: 200px; max-height: 250px">
-    </div>
-    <h6>VISIT THE COLLEGE BEHIND THE WORKS!</h6>
-    <a href="https://www.conestogac.on.ca/">Visit Conestoga College</a>
-    <h7>Non enim praesent elementum facilisis. Facilisis volutpat est velit egestas dui id ornare. 
-    Lobortis mattis aliquam faucibus purus. Volutpat consequat mauris nunc congue nisi vitae. Quis auctor elit sed vulputate. 
-    Nisl nisi scelerisque eu ultrices vitae auctor eu. Imperdiet sed euismod nisi porta lorem. Sed faucibus turpis in eu mi bibendum neque. 
-    Id eu nisl nunc mi. At erat pellentesque adipiscing commodo elit at imperdiet dui accumsan.
-    Sed ullamcorper morbi tincidunt ornare massa eget egestas purus. Facilisis mauris sit amet massa vitae.
-    Mauris a diam maecenas sed enim ut sem. Libero id faucibus nisl tincidunt. Et malesuada fames ac turpis egestas maecenas pharetra convallis. 
-    Adipiscing enim eu turpis egestas pretium aenean pharetra magna ac. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. 
-    Integer enim neque volutpat ac. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. 
-    Ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia. Dolor sed viverra ipsum nunc aliquet bibendum. 
-    Nunc vel risus commodo viverra maecenas. Id velit ut tortor pretium viverra suspendisse potenti nullam.*@ 
     
     <div class="terms-card">
 
@@ -38,18 +20,6 @@
         <h2 style="color:red">Full Time Programs</h2>
         <div class="feature-list">
             <ul class="checked-list">
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
                 <li>Content</li>
                 <li>Content</li>
                 <li>Content</li>
@@ -80,14 +50,14 @@
                 <div class="w3-content" style="max-width:1400px">
                     <div class="w3-col auto" style="padding:3%">
                         <div class="w3-hide-small w3-card-2 grey-color w3-round" style="padding:16px;">
-                            <h3> @Html.DisplayFor(modelItem => item.Name)</h3>
+                            <h4> @Html.DisplayFor(modelItem => item.Name)</h4>
                             <div>
                                 <!-- Trigger the Modal -->
                                 @*<img id="myImg" src="img_snow.jpg" alt="Snow" style="width:100%;max-width:300px">*@
                                 @if (item.MealImage == null)
                                 {
                                 <div class="con">
-                                    <img src="~/Images/NoImage.jpg" class="modal-content" id="myImg" style="width: 100%; max-width: auto; max-height: auto">
+                                    <img src="~/Images/NoImage.jpg" class="modal-content" id="myImg" style="width: 80%; max-width: auto; max-height: auto">
                                     @if (!signInManager.IsSignedIn(User))
                                     {
                                         <a asp-controller="Accounts" asp-action="login"  class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
@@ -101,7 +71,7 @@
                                 else
                                 {
                             <div class="con">
-                                <img src="~/ImageForMeals/@item.MealImage" class="modal-content" id="myImg" style="width: 400px; height:400px; max-width: 500px; max-height: 500px">
+                                <img src="~/ImageForMeals/@item.MealImage" class="modal-content" id="myImg" style="width: 250px; height: 230px ">
                                 @if (!signInManager.IsSignedIn(User))
                                 {
                                     <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
