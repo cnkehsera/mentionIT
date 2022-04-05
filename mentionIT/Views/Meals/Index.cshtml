@@ -9,83 +9,83 @@
     Layout = "~/Views/Shared/_Homepage_Layout.cshtml";
 }
 
-<aside >
-    
-    <div class="terms-card">
-
-        <p style="margin-top:-5px;font-family: Source Sans Pro;font-style: normal;font-weight: bold;font-size: 28px;line-height: 15px;color:#282A35">Website News!</p>
-        <p style="font-family: Source Sans Pro!important;font-style: normal;font-weight: bold;font-size: 16px;line-height: 16px;color:#282A35">Visit the College behind the works</p>
-        <a href="https://www.conestogac.on.ca/" style="font-family: Source Sans Pro!important;font-style: normal;font-size: 16px;line-height: 16px;"> Visit Conestoga college</a>
-        <img src="~/Images/ConestogaReference.jpg" />
-        <h2 style="color:red">Full Time Programs</h2>
-        <div class="feature-list">
-            <ul class="checked-list">
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content</li>
-                <li>Content :-}</li>
-            </ul>
+<aside>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <h5 class="card-title">Website News!</h5>
+                <p style="font-family: Source Sans Pro!important;font-style: normal;font-weight: bold;font-size: 16px;line-height: 16px;color:#282A35">Visit the College behind the works</p>
+                <a href="https://www.conestogac.on.ca/" style="font-family: Source Sans Pro!important;font-style: normal;font-size: 16px;line-height: 16px;"> Visit Conestoga college</a>
+                <img src="~/Images/ConestogaReference.jpg" class="card-img-top" />
+                <h2 style="color:red">Full Time Programs</h2>
+                <div class="feature-list">
+                    <ul class="checked-list">
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content</li>
+                        <li>Content :-}</li>
+                    </ul>
+                </div>
+                <a class="w3-bar-item w3-button ws-hover-green ws-green w3-block" id="planbox" style="margin-top:20px;font-weight:normal;font-size:18px;padding:12px 40px;border-radius:25px;" href="https://www.conestogac.on.ca/admissions" onclick="ga('send', 'event', 'Videos' , 'LandingMidButton');loginOrBuy();" title="Buy Now">Apply Now!</a>
+                <br />
+                <h4>Popular Meals</h4>
+                <p>coming soon!</p>
+                <ul class="nav nav-sidebar"></ul>
+                
+            </div>
+            
         </div>
-        <a class="w3-bar-item w3-button ws-hover-green ws-green w3-block" id="planbox" style="margin-top:20px;font-weight:normal;font-size:18px;padding:12px 40px;border-radius:25px;" href="https://www.conestogac.on.ca/admissions" onclick="ga('send', 'event', 'Videos' , 'LandingMidButton');loginOrBuy();" title="Buy Now">Apply Now!</a>
-        <br />
-        <h4>Popular Meals</h4>
-        <p>coming soon!</p>
     </div>
+
 </aside>
 
 
-
 <section>
-    <div id="row1">
-        @foreach (var item in Model)
-        {
-            <div class="w3-row w3-padding-32 ws-black" id="colum">
-                <div class="w3-content" style="max-width:1400px">
-                    <div class="w3-col auto" style="padding:3%">
-                        <div class="w3-hide-small w3-card-2 grey-color w3-round" style="padding:16px;">
-                            <h4> @Html.DisplayFor(modelItem => item.Name)</h4>
-                            <div>
-                                <!-- Trigger the Modal -->
-                                @*<img id="myImg" src="img_snow.jpg" alt="Snow" style="width:100%;max-width:300px">*@
-                                @if (item.MealImage == null)
-                                {
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4 mb-5">
+                    <div class="card" style="height:100%">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            @if (item.MealImage == null)
+                            {
                                 <div class="con">
-                                    <img src="~/Images/NoImage.jpg" class="modal-content" id="myImg" style="width: 80%; max-width: auto; max-height: auto">
+                                    <img src="~/Images/NoImage.jpg" class="card-img-top">
                                     @if (!signInManager.IsSignedIn(User))
                                     {
-                                        <a asp-controller="Accounts" asp-action="login"  class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                        <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
                                     }
                                     else
                                     {
                                         <a asp-action="Details" asp-controller="Meals" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
                                     }
                                 </div>
-                                }
-                                else
-                                {
-                            <div class="con">
-                                <img src="~/ImageForMeals/@item.MealImage" class="modal-content" id="myImg" style="width: 250px; height: 230px ">
-                                @if (!signInManager.IsSignedIn(User))
-                                {
-                                    <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
-                                }
-                                else
-                                {
-                                    <a asp-action="Details" asp-controller="Meals" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
-                                }
-                            </div>
-                                }
 
-                            </div>
-                            <br />
-                            <p style="font-family: Source Sans Pro!important;font-style: normal;font-weight: bold;font-size: 16px;line-height: 16px;color:#282A35"> Description for this recipe will be placed upon completion of this website. Please look forward for the updates!</p>
+                            }
+                            else
+                            {
+                                <div class="con">
+                                    <img src="~/ImageForMeals/@item.MealImage" class="card-img-top">
+                                    @if (!signInManager.IsSignedIn(User))
+                                    {
+                                        <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Details" asp-controller="Meals" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                    }
+                                </div>
+                            }
+                            <p class="card-text"> Description for this recipe will be placed upon completion of this website. Please look forward for the updates!</p>
                             <div class="w3-code notranslate orangered-border">
 
                                 @if (!signInManager.IsSignedIn(User))
@@ -104,12 +104,10 @@
                             <h6>Author Name: @*@Html.DisplayFor(modelItem => item.Author)*@</h6>
                         </div>
                     </div>
-
                 </div>
-            </div>
+            }
 
-        }
-
+        </div>
     </div>
-    
+
 </section>
