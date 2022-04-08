@@ -13,11 +13,14 @@
 <body>
 
     <header style="width: 100%; display: flex; flex-direction: row; justify-content: left;">
-        <div class="w3-sidebar w3-bar-block w3-animate-left" style="display: none; background-color:orangered;" id="mySidebar"  >
-            <button class="w3-bar-item w3-button"  
-                    onclick="w3_close()" >
+
+        <div class="w3-sidebar w3-bar-block w3-animate-left" style="display: none; background-color:orangered;" id="mySidebar">
+
+            <button class="w3-bar-item w3-button"
+                    onclick="w3_close()">
                 Close &times;
             </button>
+
             <ul class="navbar-nav ml-auto">
                 @if (signInManager.IsSignedIn(User))
                 {
@@ -38,17 +41,19 @@
                 }
 
             </ul>
+
             <div class="search-container">
                 <form method="get" asp-action="Index" class="form-inline" style="float:right;" id="frm">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" value="@ViewData["Getmeals"]" name="mealSearch" id="search-input">
                     <button class="btn btn-success" type="submit" value="Search" id="search-btn">Search</button>
                 </form>
             </div>
-        </div>
 
+        </div>
         <div>
             <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
         </div>
+        <img src="~/Images/MentionIT_Logo.png" width="150" height="50" style="margin-top:10px" />
 
     </header>
     
