@@ -48,23 +48,21 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <blockquote>
                             <div class="widget-title">
-                                <h4>This might help</h4>
+                                <h4>Recipe Video!</h4>
                             </div>
-                            
-                            <iframe id="cartoonVideo" width="600" height="350" src="@Html.DisplayFor(model => model.YLink)" frameborder="0" allowfullscreen></iframe>
+                            <iframe class="embed-responsive" id="cartoonVideo" width="600" height="350" src="https://youtube.com/embed/@Html.DisplayFor(model => model.YLink)" frameborder="0" allowfullscreen></iframe>
 
                             <p class="blockquote-footer">Recipe video for @Html.DisplayFor(model => model.Name)</p>
                         </blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                     <div class="nav tag-cloud">
-                        <a href="#">Design</a>
-                        <a href="#">Development</a>
-                        <a href="#">Travel</a>
-                        <a href="#">Web Design</a>
-                        <a href="#">Marketing</a>
-                        <a href="#">Research</a>
-                        <a href="#">Managment</a>
+                        <a href="#">Content</a>
+                        <a href="#">Content</a>
+                        <a href="#">Content</a>
+                        <a href="#">Content</a>
+                        <a href="#">Content</a>
+                        <a href="#">Content</a>
+                        <a href="#">Content</a>
                     </div>
                 </article>
                 <div class="contact-form article-comment">
@@ -112,7 +110,13 @@
                         <div class="latest-post-aside media">
                             <div class="lpa-left media-body">
                                 <div class="lpa-title">
-                                    <h5><a href="#">Randomize newest added recipes here!</a></h5>
+                                    @*@for (var i = 1; i <= 1; i++)
+                                    {
+                                        Random r = new Random();
+                                        Model.Id = r.Next(Model.Id,38);
+                                    }*@
+                                    <a asp-route-id="@Model.Id" asp-action="Details">View A Post Now!</a>
+                                    
                                 </div>
                                 <div class="lpa-meta">
                                     <a class="name" href="#">
@@ -127,42 +131,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="latest-post-aside media">
-                            <div class="lpa-left media-body">
-                                <div class="lpa-title">
-                                    <h5><a href="#">Randomize newest added recipes here!</a></h5>
-                                </div>
-                                <div class="lpa-meta">
-                                    <a class="name" href="#">
-                                        Author Name
-                                    </a>
-
-                                </div>
-                            </div>
-                            <div class="lpa-right">
-                                <a href="#">
-                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="latest-post-aside media">
-                            <div class="lpa-left media-body">
-                                <div class="lpa-title">
-                                    <h5><a href="#">Randomize newest added recipes here!</a></h5>
-                                </div>
-                                <div class="lpa-meta">
-                                    <a class="name" href="#">
-                                        Author Name
-                                    </a>
-
-                                </div>
-                            </div>
-                            <div class="lpa-right">
-                                <a href="#">
-                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
-                                </a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- End Author -->
@@ -205,13 +174,13 @@
                     </div>
                     <div class="widget-body">
                         <div class="nav tag-cloud">
-                            <a href="#">Design</a>
-                            <a href="#">Development</a>
-                            <a href="#">Travel</a>
-                            <a href="#">Web Design</a>
-                            <a href="#">Marketing</a>
-                            <a href="#">Research</a>
-                            <a href="#">Managment</a>
+                            <a href="#">Content</a>
+                            <a href="#">Content</a>
+                            <a href="#">Content</a>
+                            <a href="#">Content</a>
+                            <a href="#">Content</a>
+                            <a href="#">Content</a>
+                            <a href="#">Content</a>
                         </div>
                     </div>
                 </div>

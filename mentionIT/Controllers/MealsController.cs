@@ -45,7 +45,7 @@ namespace mentionIT.Controllers
                 mealquery = mealquery.Where(x => x.Name.Contains(mealSearch));
             }
             //var meal = await mealquery.AsNoTracking().ToListAsync();
-            return View(await mealquery.AsNoTracking().ToListAsync());
+            return View(await mealquery.OrderBy(o => Guid.NewGuid()).AsNoTracking().ToListAsync());
         }
         // GET: Meals/Details/5
         [Authorize]

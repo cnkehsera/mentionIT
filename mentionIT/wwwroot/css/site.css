@@ -496,6 +496,7 @@ section {
 .blog-aside .latest-post-aside .lpa-title a {
     color: #0da50d;
     font-weight: 600;
+    text-underline-offset:auto;
 }
 
 .blog-aside .latest-post-aside .lpa-meta a {
