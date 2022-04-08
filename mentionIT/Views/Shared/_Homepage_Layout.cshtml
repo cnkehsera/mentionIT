@@ -53,7 +53,7 @@
     </header>
     
     <div class="topnav" id="myHeader">
-        <a class="active" href="#home">Home</a>
+        <a class="active" asp-action="index">Home</a>
         @if (!signInManager.IsSignedIn(User))
         {
             <a asp-controller="Accounts" asp-action="login">Add Meal</a>

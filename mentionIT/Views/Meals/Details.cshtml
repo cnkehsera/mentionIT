@@ -1,8 +1,251 @@
 ﻿@model mentionIT.Models.Meal
 
 @{
+    Layout = "~/Views/Shared/_Homepage_Layout.cshtml";
+}
+
+@{
     ViewData["Title"] = "Details";
 }
+
+<div class="blog-single gray-bg">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-lg-8 m-15px-tb">
+                <article class="article">
+
+                    <div class="widget-title">
+                        <h3>@Html.DisplayFor(model => model.Name)</h3>
+                    </div>
+                    <div class="article-img">
+                        <img src="~/ImageForMeals/@Html.DisplayFor(model => model.MealImage)" style="width:600px;height:350px;" class="card-img-top">
+                    </div>
+                    <div class="article-title">
+                        <h6><a href="https://localhost:44353/ImageForMeals/@Html.DisplayFor(model => model.MealImage)">Full Image</a></h6>
+                        <h2>The steps bellow will help you get started!</h2>
+                        <div class="media">
+                            <div class="avatar">
+                                <img src="~/Images/profile_icon.jpg" title="" alt="">
+                            </div>
+                            <div class="media-body">
+                                <label>Author name here!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <p>Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem. Adipiscing veni amet luctus enim sem libero tellus viverra venenatis aliquam. Commodo natoque quam pulvinar elit.</p>
+                        <p>Eget aenean tellus venenatis. Donec odio tempus. Felis arcu pretium metus nullam quam aenean sociis quis sem neque vici libero. Venenatis nullam fringilla pretium magnis aliquam nunc vulputate integer augue ultricies cras. Eget viverra feugiat cras ut. Sit natoque montes tempus ligula eget vitae pede rhoncus maecenas consectetuer commodo condimentum aenean.</p>
+                        <h4>What are my payment options?</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            <p class="blockquote-footer">Someone famous in <cite title="Source Title">Dick Grayson</cite></p>
+                        </blockquote>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                    <div class="nav tag-cloud">
+                        <a href="#">Design</a>
+                        <a href="#">Development</a>
+                        <a href="#">Travel</a>
+                        <a href="#">Web Design</a>
+                        <a href="#">Marketing</a>
+                        <a href="#">Research</a>
+                        <a href="#">Managment</a>
+                    </div>
+                </article>
+                <div class="contact-form article-comment">
+                    <h4>Leave a Reply</h4>
+                    <form id="contact-form" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input name="Name" id="name" placeholder="Name *" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input name="Email" id="email" placeholder="Email *" class="form-control" type="email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="message" placeholder="Your message *" rows="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="send">
+                                    <button class="px-btn theme"><span>Submit</span> <i class="arrow"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 m-15px-tb blog-aside">
+                <!-- Author -->
+                <div class="widget widget-author">
+                    <div class="widget-title">
+                        <h3>Author</h3>
+                    </div>
+                    <div class="widget-body">
+                        <div class="media align-items-center">
+                            <div class="avatar">
+                                <img src="~/Images/profile_icon.jpg" title="" alt="">
+                            </div>
+                            <div class="media-body">
+                                <h6>"Author name!"</h6>
+                            </div>
+                        </div>
+                        <p class="card-text"> Description for this recipe will be placed upon completion of this website. Please look forward for the updates!</p>
+                    </div>
+                </div>
+
+                <div class="widget widget-latest-post">
+                    <div class="widget-title">
+                        <h3>Latest Post</h3>
+                    </div>
+                    <div class="widget-body">
+                        <div class="latest-post-aside media">
+                            <div class="lpa-left media-body">
+                                <div class="lpa-title">
+                                    <h5><a href="#">Randomize newest added recipes here!</a></h5>
+                                </div>
+                                <div class="lpa-meta">
+                                    <a class="name" href="#">
+                                        Author Name
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="lpa-right">
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="latest-post-aside media">
+                            <div class="lpa-left media-body">
+                                <div class="lpa-title">
+                                    <h5><a href="#">Randomize newest added recipes here!</a></h5>
+                                </div>
+                                <div class="lpa-meta">
+                                    <a class="name" href="#">
+                                        Author Name
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="lpa-right">
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="latest-post-aside media">
+                            <div class="lpa-left media-body">
+                                <div class="lpa-title">
+                                    <h5><a href="#">Randomize newest added recipes here!</a></h5>
+                                </div>
+                                <div class="lpa-meta">
+                                    <a class="name" href="#">
+                                        Author Name
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="lpa-right">
+                                <a href="#">
+                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title="" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Author -->
+                <!-- Trending Post -->
+                <div class="widget widget-post">
+                    <div class="widget-title">
+                        <h3>Trending Now</h3>
+                        <br />
+                        <p style="font-family: Source Sans Pro!important;font-style: normal;font-weight: bold;font-size: 16px;line-height: 16px;color:#282A35">Visit the College behind the works</p>
+                        <a href="https://www.conestogac.on.ca/" style="font-family: Source Sans Pro!important;font-style: normal;font-size: 16px;line-height: 16px;"> Visit Conestoga college</a>
+                        <img src="~/Images/ConestogaReference.jpg" class="card-img-top" />
+                        <h2 style="color:red">Full Time Programs</h2>
+                        <div class="feature-list">
+                            <ul class="checked-list">
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content</li>
+                                <li>Content :-}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+
+                    </div>
+                </div>
+                <!-- End Trending Post -->
+                <!-- Latest Post -->
+                <!-- End Latest Post -->
+                <!-- widget Tags -->
+                <div class="widget widget-tags">
+                    <div class="widget-title">
+                        <h3>Latest Tags</h3>
+                    </div>
+                    <div class="widget-body">
+                        <div class="nav tag-cloud">
+                            <a href="#">Design</a>
+                            <a href="#">Development</a>
+                            <a href="#">Travel</a>
+                            <a href="#">Web Design</a>
+                            <a href="#">Marketing</a>
+                            <a href="#">Research</a>
+                            <a href="#">Managment</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End widget Tags -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @*This is the details page*@
 <h1>Details</h1>
 
@@ -10,6 +253,7 @@
     <h4>Meal</h4>
     <hr />
     <dl class="row">
+        @*<img src="~/ImageForMeals/@Html.DisplayFor(model => model.MealImage)" width="20" height="200" class="card-img-top">*@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -23,8 +267,8 @@
             @Html.DisplayFor(model => model.Cuisine)
         </dd>
         <dt class="col-sm-2">
-            @*@Html.DisplayNameFor(model => model.Likes)*@
-            <a asp-action="Details" asp-controller="Meals" asp-route-id="@Model.Id" asp-route-changeLikes="true"><img src="~/Images/like.png" alt="like_img" width="40" height="40" /></a>
+
+            @Html.DisplayNameFor(model => model.Likes)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Likes)
@@ -42,11 +286,11 @@
             <a href="@Html.DisplayFor(model => model.YLink)">@Html.DisplayFor(model => model.YLink)</a>
         </dd>
         @*<dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MealImage)
-        </dd>*@
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MealImage)
+            </dd>*@
     </dl>
 </div>
 <div>
