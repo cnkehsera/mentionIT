@@ -132,7 +132,7 @@ namespace mentionIT.Controllers
             else
             {
                 var meal = new Meal
-                {   
+                {
 
                     Id = vm.Id,
                     Name = vm.Name,
@@ -140,7 +140,10 @@ namespace mentionIT.Controllers
                     Likes = vm.Likes,
                     Comments = vm.Comments,
                     YLink = vm.YLink,
-                    MealImage = stringFileName
+                    MealImage = stringFileName,
+                    AuthorName = vm.AuthorName,
+                    Description = vm.Description,
+                    RecipeSteps = vm.RecipeSteps
                 };
                 _context.Meal.Add(meal);
                 _context.SaveChanges();

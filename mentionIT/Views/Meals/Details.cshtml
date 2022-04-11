@@ -34,18 +34,14 @@
                                     <img src="~/Images/profile_icon.jpg" title="" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <label>Author name here!</label>
+                                    <label>Author name: @Html.DisplayFor(model => model.AuthorName)</label>
                                     <br />
                                     <label>Cuisine: @Html.DisplayFor(model => model.Cuisine)</label>
-                                    <label></label>
                                 </div>
                             </div>
                         </div>
                         <div class="article-content">
-                            <p>Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem. Adipiscing veni amet luctus enim sem libero tellus viverra venenatis aliquam. Commodo natoque quam pulvinar elit.</p>
-                            <p>Eget aenean tellus venenatis. Donec odio tempus. Felis arcu pretium metus nullam quam aenean sociis quis sem neque vici libero. Venenatis nullam fringilla pretium magnis aliquam nunc vulputate integer augue ultricies cras. Eget viverra feugiat cras ut. Sit natoque montes tempus ligula eget vitae pede rhoncus maecenas consectetuer commodo condimentum aenean.</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>@Html.DisplayFor(model => model.RecipeSteps)</p>
                             <blockquote>
                                 <div class="widget-title">
                                     <h4>Recipe Video!</h4>
@@ -95,10 +91,10 @@
                                     <img src="~/Images/profile_icon.jpg" title="" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <h6>"Author name!"</h6>
+                                    <h6>@Html.DisplayFor(model => model.AuthorName)</h6>
                                 </div>
                             </div>
-                            <p class="card-text"> Description for this recipe will be placed upon completion of this website. Please look forward for the updates!</p>
+                            <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
                         </div>
                     </div>
 
@@ -120,7 +116,7 @@
                                     </div>
                                     <div class="lpa-meta">
                                         <a class="name" href="#">
-                                            Author Name
+                                            @Html.DisplayFor(model => model.AuthorName)
                                         </a>
 
                                     </div>

@@ -90,9 +90,26 @@
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
+                                                                    <label>Author Name</label>
+                                                                    <input asp-for="AuthorName" class="form-control" type="text">
+                                                                    <span asp-validation-for="AuthorName" class="text-danger"></span>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
                                                                     <label>Cuisine</label>
                                                                     <input asp-for="Cuisine" class="form-control" type="text">
                                                                     <span asp-validation-for="Cuisine" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col mb-3">
+                                                                <div class="form-group">
+                                                                    <label>Description</label>
+                                                                    <textarea asp-for="Description" class="form-control" rows="5" placeholder="This dish is..."></textarea>
+                                                                    <span asp-validation-for="Description" class="text-danger"></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -109,8 +126,8 @@
                                                             <div class="col mb-3">
                                                                 <div class="form-group">
                                                                     <label>Recipe Steps</label>
-                                                                    <textarea class="form-control" rows="5" placeholder="Steps..."></textarea>
-                                                                    <span class="text-danger"></span>
+                                                                    <textarea asp-for="RecipeSteps" class="form-control" rows="5" placeholder="Steps..."></textarea>
+                                                                    <span asp-validation-for="RecipeSteps" class="text-danger"></span>
                                                                 </div>
                                                             </div>
                                                         </div>
