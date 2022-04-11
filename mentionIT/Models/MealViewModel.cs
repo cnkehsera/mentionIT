@@ -15,5 +15,8 @@ namespace mentionIT.Models
         public string YLink { get; set; }
         [Required(ErrorMessage = "Please Upload a photo")]
         public IFormFile MealImage { get; set; }
+        public string AuthorName { get; set; }
+        public string Description { get; set; }
+        public string RecipeSteps { get; set; }
     }
 }
