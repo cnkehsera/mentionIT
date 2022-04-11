@@ -12,6 +12,8 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 
+
+
 namespace mentionIT.Controllers
 {
     public class MealsController : Controller
@@ -117,12 +119,14 @@ namespace mentionIT.Controllers
                 source.EndsWith(".jpg") ||
                 source.EndsWith(".JPG"));
         }
+
         [HttpPost]
         public IActionResult ImageAdd(MealViewModel vm)
         {
             string stringFileName = UploadFile(vm);
             if (stringFileName == null)
             {
+                
                 return View("ImageAdd");
             }
             else
@@ -140,8 +144,9 @@ namespace mentionIT.Controllers
                 };
                 _context.Meal.Add(meal);
                 _context.SaveChanges();
+                return RedirectToAction("Details", new { id = meal.Id });
             }
-            return RedirectToAction("Index");
+            
         }
         private string UploadFile(MealViewModel vm)
         {
@@ -167,6 +172,9 @@ namespace mentionIT.Controllers
                 }
 
 
+            }
+            {
+                ModelState.AddModelError(string.Empty, "Please Enter File");
             }
             return fileName;
         }
@@ -265,7 +273,17 @@ namespace mentionIT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            
             var meal = await _context.Meal.FindAsync(id);
+            if (meal.MealImage == null)
+            {
+            }
+            else
+            {
+                string fileName = @"wwwroot/ImageForMeals/" + meal.MealImage;
+                FileInfo file = new FileInfo(fileName);
+                file.Delete();
+            }
             _context.Meal.Remove(meal);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

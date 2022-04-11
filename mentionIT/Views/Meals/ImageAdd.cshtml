@@ -1,62 +1,161 @@
-﻿@model mentionIT.Models.MealViewModel
-
+﻿<style>
+    body {
+        background-image: url("/Images/rm309-adj-03.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+@inject SignInManager<IdentityUser> signInManager;
+@model mentionIT.Models.MealViewModel
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+@{
+    Layout = "~/Views/Shared/_Homepage_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="create-cont">
+    <div class="container">
+        <div class="row flex-lg-nowrap">
+            <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+                <div class="card p-3">
+                    <div class="e-navlist e-navlist--active-bg">
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link px-2 active" href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2" href="#" target="__blank"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2" href="#" target="__blank"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
 
-<h4>Meal</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="ImageAdd" enctype="multipart/form-data">
 
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cuisine" class="control-label"></label>
-                <input asp-for="Cuisine" class="form-control" />
-                <span asp-validation-for="Cuisine" class="text-danger"></span>
-            </div>
+                    <div class="col mb-3">
+                        <div class="card">
+                            <form asp-action="ImageAdd" enctype="multipart/form-data" class="form" novalidate="">
+                                <div class="card-body">
+                                    <div class="e-profile">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-auto mb-3">
+                                                <div class="mx-auto" style="width: 140px;">
+                                                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">Picture</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Add a Recipe</h4>
+                                                    <p class="mb-0">meal photo</p>
+                                                    <div class="mt-2">
+                                                        <div class="input-group">
+                                                            <div class="custom-file">
+                                                                <input type="file" asp-for="MealImage" accept="image/x-png,image/gif,image/jpeg" class="custom-file-input" id="inputGroupFile01"
+                                                                       aria-describedby="inputGroupFileAddon01">
+                                                                <label class="custom-file-label" for="inputGroupFile01">Choose Photo</label>
+                                                            </div>
+                                                        </div>
+                                                        <span asp-validation-for="MealImage" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center text-sm-right">
+                                                    <span class="badge badge-secondary">administrator</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="" class="active nav-link">Details</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
 
-            <div class="form-group">
-                <label asp-for="Likes" class="control-label"></label>
-                <input asp-for="Likes" class="form-control" />
-                <span asp-validation-for="Likes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Comments" class="control-label"></label>
-                <input asp-for="Comments" class="form-control" />
-                <span asp-validation-for="Comments" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">YouTube Link Id (Example: U6BqkCa-800)</label>
-                <input asp-for="YLink" class="form-control" />
-                <span asp-validation-for="YLink" class="text-danger"></span>
-            </div>
-            <input type="file" asp-for="MealImage" accept="image/x-png,image/gif,image/jpeg" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-control">
-            <label asp-for="MealImage" class="control-label"></label>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
 
-            <span asp-validation-for="MealImage" class="text-danger"></span>
-        </div>*@
 
-            <div class="form-group" style="padding-top:5px;">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Name</label>
+                                                                    <input asp-for="Name" class="form-control" type="text">
+                                                                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Cuisine</label>
+                                                                    <input asp-for="Cuisine" class="form-control" type="text">
+                                                                    <span asp-validation-for="Cuisine" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>YouTube Link ID (Example: U6BqkCa800) </label>
+                                                                    <input asp-for="YLink" class="form-control" type="text" placeholder="U6BqkCa800">
+                                                                    <span asp-validation-for="YLink" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col mb-3">
+                                                                <div class="form-group">
+                                                                    <label>Recipe Steps</label>
+                                                                    <textarea class="form-control" rows="5" placeholder="Steps..."></textarea>
+                                                                    <span class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" style="padding-top:5px;">
+                                                    <input type="submit" value="Save Changes" class="btn btn-primary" />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="px-xl-3">
+                                    <form method="post" asp-action="logout" asp-controller="Accounts">
+                                        <button type="submit" class="btn btn-block btn-secondary">
+                                            <i class="fa fa-sign-out"></i>
+                                            <span>Logout</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title font-weight-bold">Support</h6>
+                                <p class="card-text">Need Help? Reach us At....</p>
+                                <button type="submit" class="btn btn-primary">Contact Us</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

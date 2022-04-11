@@ -9,7 +9,10 @@
     <title>@ViewData["Title"] - mentionIT</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
+
+
 <body>
 
     <header style="width: 100%; display: flex; flex-direction: row; justify-content: left;">
@@ -56,9 +59,10 @@
         <img src="~/Images/MentionIT_Logo.png" width="150" height="50" style="margin-top:10px" />
 
     </header>
-    
+
     <div class="topnav" id="myHeader">
-        <a class="active" asp-action="index">Home</a>
+
+        <a asp-action="index">Home</a>
         @if (!signInManager.IsSignedIn(User))
         {
             <a asp-controller="Accounts" asp-action="login">Add Meal</a>
@@ -71,7 +75,35 @@
         <a href="#about">About</a>
 
     </div>
-
+    <div class="footer-dark" id="footer" >
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Category</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Platforms</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>MentionIt</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">MentionIt © 2022</p>
+            </div>
+        </footer>
+    </div>
     <div class="container" style="margin:auto">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -91,4 +123,5 @@
     function w3_close() {
         document.getElementById("mySidebar").style.display = "none";
     }
+    
 </script>
