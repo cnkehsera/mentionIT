@@ -17,6 +17,8 @@ namespace mentionIT.Models
         public IFormFile MealImage { get; set; }
         public string AuthorName { get; set; }
         public string Description { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string RecipeSteps { get; set; }
     }
 }

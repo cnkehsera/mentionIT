@@ -106,6 +106,7 @@ namespace mentionIT.Controllers
 
             return View();
         }
+
         private bool HasImageExtension(string source)
         {
             if (source == null) { return false; }

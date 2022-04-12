@@ -70,7 +70,7 @@
                                 <div class="solu_title">
                                     <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                                 </div>
-                                <div class="solu_description">
+                                <div class="solu_description" style="max-width:320px;">
                                     @if (item.MealImage == null)
                                     {
                                         <div class="con">
@@ -100,8 +100,12 @@
                                             }
                                         </div>
                                     }
-                                    <p class="card-text"> Description for this recipe will be placed upon completion of this website. Please look forward for the updates!</p>
-
+                                    @if (item.Description == null)
+                                    {
+                                        <p class="card-text"  style="max-width:320px">The Author hasn't made up thier mine yet for this meal's description. Lets give them some more time &#128521</p>
+                                    }else { 
+                                        <p class="card-text" style="max-width:320px">@item.Description </p>
+                                    }
                                     @if (!signInManager.IsSignedIn(User))
                                     {
 

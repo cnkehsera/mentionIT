@@ -17,6 +17,7 @@ namespace mentionIT.Data
         
         public DbSet<mentionIT.Models.Meal> Meal { get; set; }
         public DbSet<mentionIT.Models.LikesUserLink> LikesUserLink { get; set; }
+        public DbSet<mentionIT.Models.MealComment> MealComment { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

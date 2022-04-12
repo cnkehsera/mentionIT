@@ -41,10 +41,16 @@
                             </div>
                         </div>
                         <div class="article-content">
-                            <p>@Html.DisplayFor(model => model.RecipeSteps)</p>
+                            @if (Model.RecipeSteps == null)
+                            {
+                                <h4>Sorry! No steps provided. Check out the video!</h4>
+                            }else
+                            {
+                            <textarea readonly class="text-area">@Html.DisplayFor(model => model.RecipeSteps)</textarea>
+                            }
                             <blockquote>
                                 <div class="widget-title">
-                                    <h4>Recipe Video!</h4>
+                                    <h4>Recipe Video</h4>
                                 </div>
                                 <iframe class="embed-responsive" id="cartoonVideo" width="600" height="350" src="https://youtube.com/embed/@Html.DisplayFor(model => model.YLink)" frameborder="0" allowfullscreen></iframe>
 
