@@ -20,5 +20,7 @@ namespace mentionIT.Models
         public string RecipeSteps {get; set;}
         public IEnumerable<MealComment> MealComments { get; set; }
 
+
+
     }
 }

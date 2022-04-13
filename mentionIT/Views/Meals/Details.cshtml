@@ -44,9 +44,10 @@
                             @if (Model.RecipeSteps == null)
                             {
                                 <h4>Sorry! No steps provided. Check out the video!</h4>
-                            }else
+                            }
+                            else
                             {
-                            <textarea readonly class="text-area">@Html.DisplayFor(model => model.RecipeSteps)</textarea>
+                                <textarea readonly class="text-area">@Html.DisplayFor(model => model.RecipeSteps)</textarea>
                             }
                             <blockquote>
                                 <div class="widget-title">
@@ -58,18 +59,18 @@
                             </blockquote>
                         </div>
                         <div class="nav tag-cloud">
-                            <a href="#">Content</a>
-                            <a href="#">Content</a>
-                            <a href="#">Content</a>
-                            <a href="#">Content</a>
-                            <a href="#">Content</a>
-                            <a href="#">Content</a>
-                            <a href="#">Content</a>
+                            <a href="#">Popular Meals</a>
+                            <a href="#">Contact</a>
+                            <a href="#">About</a>
+                            <a href="#">Conestoga College</a>
+                            <a href="#">Cathegory</a>
                         </div>
                     </article>
                     <div class="contact-form article-comment">
                         <h4>Leave a Comment!</h4>
-                        <form id="contact-form" method="POST">
+
+                        <form id="contact-form" asp-action="CreateComment" asp-route-MealId="@Model.Id">
+                            <input asp-route-MealId="@Model.Id" type="hidden" />
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -84,6 +85,17 @@
                             </div>
                         </form>
                     </div>
+                    @*@if (Model.MealComments != null)
+                    {
+                        @foreach (var item in Model.MealComments)
+                        {
+                            <p>@item.Message</p>
+                        }
+                    }
+                    else
+                    {
+                        <p>No comments</p>
+                    }*@
                 </div>
                 <div class="col-lg-4 m-15px-tb blog-aside">
                     <!-- Author -->
@@ -148,17 +160,17 @@
                             <h2 style="color:red">Full Time Programs</h2>
                             <div class="feature-list">
                                 <ul class="checked-list">
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content</li>
-                                    <li>Content :-}</li>
+                                    <li>Supply Chain Management - Global</li>
+                                    <li>Sustainable Business Management (Optional Co-op)</li>
+                                    <li>Teaching English as a Second Language</li>
+                                    <li>Technical Communication (Optional Co-op)</li>
+                                    <li>Technology Foundations</li>
+                                    <li>Tourism - Destinations and Travel Management (Optional Co-op)</li>
+                                    <li>Web Development</li>
+                                    <li>Welding and Fabrication Technician</li>
+                                    <li>Welding Techniques</li>
+                                    <li>Woodworking Techniques - CNC</li>
+                                    <li>Woodworking Technology (Optional Co-op)</li>
                                 </ul>
                             </div>
                         </div>
@@ -176,13 +188,11 @@
                         </div>
                         <div class="widget-body">
                             <div class="nav tag-cloud">
-                                <a href="#">Content</a>
-                                <a href="#">Content</a>
-                                <a href="#">Content</a>
-                                <a href="#">Content</a>
-                                <a href="#">Content</a>
-                                <a href="#">Content</a>
-                                <a href="#">Content</a>
+                                <a href="#">Category</a>
+                                <a href="#">News</a>
+                                <a href="#">Help</a>
+                                <a href="#">Team</a>
+                                <a href="#">Platforms</a>
                             </div>
                         </div>
                     </div>

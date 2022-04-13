@@ -28,17 +28,18 @@
                     <h2 style="color:red">Full Time Programs</h2>
                     <div class="feature-list">
                         <ul class="checked-list">
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content</li>
-                            <li>Content :-}</li>
+                            Supply Chain Management - Global
+                            <li>Web Development</li>
+                            <li>Sustainable Business Management</li>
+                            <li>Teaching English as a Second Language</li>
+                            <li>Technical Communication</li>
+                            <li>Technology Foundations</li>
+                            <li>Tourism - Destinations and Travel Management (Optional Co-op)</li>
+                            <li>Web Development</li>
+                            <li>Welding and Fabrication Technician</li>
+                            <li>Welding Techniques</li>
+                            <li>Woodworking Techniques - CNC</li>
+                            <li>Woodworking Technology (Optional Co-op)</li>
                         </ul>
                     </div>
                     <a class="w3-bar-item w3-button ws-hover-green ws-green w3-block" id="planbox" style="margin-top:20px;font-weight:normal;font-size:18px;padding:12px 40px;border-radius:25px;" href="https://www.conestogac.on.ca/admissions" onclick="ga('send', 'event', 'Videos' , 'LandingMidButton');loginOrBuy();" title="Buy Now">Apply Now!</a>
@@ -81,7 +82,7 @@
                                             }
                                             else
                                             {
-                                                <a asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                                <a asp-action="Details" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
                                             }
                                         </div>
 
@@ -96,29 +97,32 @@
                                             }
                                             else
                                             {
-                                                <a asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                                <a asp-action="Details" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
                                             }
                                         </div>
                                     }
                                     @if (item.Description == null)
                                     {
-                                        <p class="card-text"  style="max-width:320px">The Author hasn't made up thier mine yet for this meal's description. Lets give them some more time &#128521</p>
-                                    }else { 
+                                        <p class="card-text" style="max-width:320px">The Author hasn't made up thier mine yet for this meal's description. Lets give them some more time &#128521</p>
+                                    }
+                                    else
+                                    {
                                         <p class="card-text" style="max-width:320px">@item.Description </p>
                                     }
                                     @if (!signInManager.IsSignedIn(User))
                                     {
 
-                                        <a class="read_more_btn" asp-controller="Accounts" asp-action="login" asp-route-id="@item.Id">Details</a>
+                                        <a class="detail-btn" asp-controller="Accounts" asp-action="login" asp-route-id="@item.Id" >Details</a>
                                     }
 
                                     else
                                     {
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="read_more_btn">Details</a>
-                                        <br />
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="read_more_btn">Delete</a>
-                                    }
 
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="detail-btn">Details</a>
+                                        <br />
+                                        @*<a asp-action="Delete" asp-route-id="@item.Id" class="read_more_btn">Delete</a>*@
+                                    }
+                                    <br />
                                     <h6>Likes: @Html.DisplayFor(modelItem => item.Likes)</h6>
                                     <h6>Author Name: @Html.DisplayFor(modelItem => item.AuthorName)</h6>
                                 </div>

@@ -106,7 +106,10 @@ namespace mentionIT.Controllers
 
             return View();
         }
-
+        [HttpPost(Name = "Comments")]
+        [Authorize]
+        //[ValidateAntiForgeryToken]
+        
         private bool HasImageExtension(string source)
         {
             if (source == null) { return false; }
@@ -120,7 +123,30 @@ namespace mentionIT.Controllers
                 source.EndsWith(".jpg") ||
                 source.EndsWith(".JPG"));
         }
+        [HttpPost(Name = "Comments")]
+        [Authorize]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateComment([Bind("Message")] MealComment mealComment, int mealId)
+        {
+            // Find the meal with Id
+            Meal meal = await _context.Meal.FindAsync(mealId);
+            //Validate the model which have the comment
+            if (ModelState.IsValid)
+            {
+                mealComment.Created = DateTime.Now;
+                mealComment.Meal = meal;
+                _context.Add(mealComment);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Details), new { id = meal.Id });
 
+            }
+            //Add the meal to the mealcomment
+            //Save the comment 
+            //redirect to details 
+
+
+            return View(meal);
+        }
         [HttpPost]
         public IActionResult ImageAdd(MealViewModel vm)
         {
