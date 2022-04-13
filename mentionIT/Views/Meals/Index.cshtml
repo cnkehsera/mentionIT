@@ -120,7 +120,7 @@
 
                                         <a asp-action="Details" asp-route-id="@item.Id" class="detail-btn">Details</a>
                                         <br />
-                                        @*<a asp-action="Delete" asp-route-id="@item.Id" class="read_more_btn">Delete</a>*@
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="detail-btn">Delete</a>
                                     }
                                     <br />
                                     <h6>Likes: @Html.DisplayFor(modelItem => item.Likes)</h6>
