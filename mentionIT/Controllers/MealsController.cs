@@ -135,6 +135,7 @@ namespace mentionIT.Controllers
             {
                 mealComment.Created = DateTime.Now;
                 mealComment.Meal = meal;
+                meal.Comments += mealComment.Message + "\n";
                 _context.Add(mealComment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), new { id = meal.Id });
