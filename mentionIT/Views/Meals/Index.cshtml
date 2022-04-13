@@ -103,7 +103,7 @@
                                     }
                                     @if (item.Description == null)
                                     {
-                                        <p class="card-text" style="max-width:320px">The Author hasn't made up thier mine yet for this meal's description. Lets give them some more time &#128521</p>
+                                        <p class="card-text" style="max-width:320px">The Author hasn't made up thier mind yet for this meal's description. Lets give them some more time &#128521</p>
                                     }
                                     else
                                     {
@@ -120,7 +120,6 @@
 
                                         <a asp-action="Details" asp-route-id="@item.Id" class="detail-btn">Details</a>
                                         <br />
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="detail-btn">Delete</a>
                                     }
                                     <br />
                                     <h6>Likes: @Html.DisplayFor(modelItem => item.Likes)</h6>
