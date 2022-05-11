@@ -1,8 +1,10 @@
 {
   "dependencies": {
     "mssql1": {
-      "type": "mssql.local",
-      "connectionId": "ConnectionStrings:mentionITContext"
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:mentionITContext",
+      "suggestion": "true",
+      "ignored": "true"
     }
   }
 }

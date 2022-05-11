@@ -28,12 +28,7 @@ namespace mentionIT.Migrations
                 columns: new[] { "Id", "Comments", "Cuisine", "Likes", "Name", "YLink" },
                 values: new object[,]
                 {
-                    { 1, "", "Italian", 3, "Chicken Scarpariello", "https://www.youtube.com/results?search_query=italian+recipes+for+dinner" },
-                    { 2, "", "Indian", 3, "Mughlai Chicken Handi", "https://www.youtube.com/watch?v=u66pG73UroY" },
-                    { 3, "", "Lebanese", 3, "Lebanese Chicken", "https://www.youtube.com/watch?v=EwYGQ9Rx53w" },
-                    { 4, "", "Portuguese", 3, "Cataplana ", "https://www.youtube.com/watch?v=utv-GpSJypk" },
-                    { 5, "", "Pakistani", 3, "Karahi chicken", "https://www.youtube.com/watch?v=RBS-ptrMAgI" },
-                    { 6, "", "French", 3, "Cassoulet", "https://www.youtube.com/watch?v=nKGsoQM5YJk" }
+                    { 1, "", "Italian", 3, "Chicken Scarpariello", "https://www.youtube.com/results?search_query=italian+recipes+for+dinner" }
                 });
         }
 

@@ -6,57 +6,60 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75, maximum-scale=1.10" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>@ViewData["Title"] - mentionIT</title>
+    <title>@ViewData["Title"] - MentionIt</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 
 <body>
 
-    <header style="width: 100%; display: flex; flex-direction: row; justify-content: left;">
+    <header style="width: 100%; display: flex; flex-direction: row; justify-content: right;">
+        <a class="navbar-brand" asp-area="" asp-controller="Meals" asp-action="Index">
+            <img src="~/Images/MentionIT_Logo.png" width="150" height="50" style="margin-top: 10px; position: absolute; left: 20px;" />
+        </a>
+            <div class="w3-sidebar w3-bar-block w3-animate-right" style="display: none; background-color:orangered;" id="mySidebar">
 
-        <div class="w3-sidebar w3-bar-block w3-animate-left" style="display: none; background-color:orangered;" id="mySidebar">
+                <button class="w3-bar-item w3-button"
+                        onclick="w3_close()">
+                    Close &times;
+                </button>
 
-            <button class="w3-bar-item w3-button"
-                    onclick="w3_close()">
-                Close &times;
-            </button>
+                <ul class="navbar-nav ml-auto">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li class="w3-bar-item w3-button">
+                            <form method="post" asp-action="logout" asp-controller="Accounts">
+                                <button type="submit" class="detail-btn" style="width:auto">Logout?</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="w3-bar-item w3-button">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Register">Register</a>
+                        </li>
+                        <li class="w3-bar-item w3-button">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="login">Login</a>
+                        </li>
+                    }
 
-            <ul class="navbar-nav ml-auto">
-                @if (signInManager.IsSignedIn(User))
-                {
-                    <li class="w3-bar-item w3-button">
-                        <form method="post" asp-action="logout" asp-controller="Accounts">
-                            <button type="submit" class="detail-btn" style="width:auto">Logout?</button>
-                        </form>
-                    </li>
-                }
-                else
-                {
-                    <li class="w3-bar-item w3-button">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Register">Register</a>
-                    </li>
-                    <li class="w3-bar-item w3-button">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="login">Login</a>
-                    </li>
-                }
+                </ul>
 
-            </ul>
+                <div class="search-container">
+                    <form method="get" asp-action="Index" class="form-inline" style="float:right;" id="frm">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" value="@ViewData["Getmeals"]" name="mealSearch" id="search-input">
+                        <button class="btn btn-success" type="submit" value="Search" id="search-btn">Search</button>
+                    </form>
+                </div>
 
-            <div class="search-container">
-                <form method="get" asp-action="Index" class="form-inline" style="float:right;" id="frm">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search" value="@ViewData["Getmeals"]" name="mealSearch" id="search-input">
-                    <button class="btn btn-success" type="submit" value="Search" id="search-btn">Search</button>
-                </form>
+            </div>
+            <div>
+                <button class="w3-button w3-xxlarge" onclick="w3_open()">&#9776;</button>
             </div>
 
-        </div>
-        <div>
-            <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
-        </div>
-        <img src="~/Images/MentionIT_Logo.png" width="150" height="50" style="margin-top:10px" />
 
     </header>
 
@@ -75,40 +78,44 @@
         <a href="#about">About</a>
 
     </div>
-    <div class="footer-dark" id="footer" >
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="#">Category</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Platforms</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 item text">
-                        <h3>MentionIt</h3>
-                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
-                    </div>
-                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
-                </div>
-                <p class="copyright">MentionIt © 2022</p>
-            </div>
-        </footer>
-    </div>
+
     <div class="container" style="margin:auto">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Category</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Platforms</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>MentionIt</h3>
+                    <p>MentionIt is a College Capstone project that delivers a website for users requiring meal recipes in their area. They can participate in the creation of meal recipes as well as interact with them.</p>                
+                </div>
+                <div class="col item social">
+                    <a href="#!" class="text-danger"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#!" class="text-danger"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#!" class="text-danger"><i class="fab fa-google fa-lg"></i></a>
+                </div>
+            </div>
+            <p class="copyright">MentionIt © 2022</p>
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

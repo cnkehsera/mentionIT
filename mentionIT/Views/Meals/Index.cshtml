@@ -1,12 +1,12 @@
 ﻿@inject SignInManager<IdentityUser> signInManager;
 @model IEnumerable<mentionIT.Models.Meal>
-    <style>
+<style>
 
-        html {
-            background: url(images/rm309-adj-03.jpg) no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
+    body {
+        background: url(images/rm309-adj-03.jpg) no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
 @{
     ViewData["Title"] = "Index";
 }
@@ -14,126 +14,120 @@
 @{
     Layout = "~/Views/Shared/_Homepage_Layout.cshtml";
 }
+    <div class="content-area">
+        <aside class="sidebar-area" role="complementary">
+            <nav class="side-navigation" role="navigation">
+                <br />
+                <h5 class="card-title" id="sidebar">Website News!</h5>
+                <p style="font-family: Source Sans Pro!important;font-style: normal;font-size: 16px;line-height: 16px">Visit the College behind the works</p>
+                <a href="https://www.conestogac.on.ca/" style="font-family: Source Sans Pro!important;font-style: normal;font-size: 16px;line-height: 16px;"> Visit Conestoga college</a>
+                <img src="~/Images/ConestogaReference.jpg" class="card-img-top" />
+                <h2 >Full Time Programs</h2>
+                <div class="feature-list">
+                    <ul class="checked-list">
+                        Supply Chain Management - Global
+                        <li>Web Development</li>
+                        <li>Sustainable Business Management</li>
+                        <li>Teaching English as a Second Language</li>
+                        <li>Technical Communication</li>
+                        <li>Technology Foundations</li>
+                        <li>Tourism - Destinations and Travel Management (Optional Co-op)</li>
+                        <li>Web Development</li>
+                        <li>Welding and Fabrication Technician</li>
+                        <li>Welding Techniques</li>
+                        <li>Woodworking Techniques - CNC</li>
+                        <li>Woodworking Technology (Optional Co-op)</li>
+                    </ul>
+                </div>
+                <a class="btn btn-success" style="margin-top:20px;font-weight:normal;font-size:18px;padding:12px 40px;border-radius:25px;" href="https://www.conestogac.on.ca/admissions" >Apply Now!</a>
+                <br />
+                <h4>Popular Meals</h4>
+                <p>coming soon!</p>
+                <ul class="nav nav-sidebar"></ul>
 
-<aside>
-    
-        <div class="container-fluid" id="stick">
-            <div class="row" id="content">
-                <div class="col-sm-3 col-md-2 sidebar" id="side-cont">
-                    <br />
-                    <h5 class="card-title" id="sidebar">Website News!</h5>
-                    <p style="font-family: Source Sans Pro!important;font-style: normal;font-weight: bold;font-size: 16px;line-height: 16px;color:#282A35">Visit the College behind the works</p>
-                    <a href="https://www.conestogac.on.ca/" style="font-family: Source Sans Pro!important;font-style: normal;font-size: 16px;line-height: 16px;"> Visit Conestoga college</a>
-                    <img src="~/Images/ConestogaReference.jpg" class="card-img-top" />
-                    <h2 style="color:red">Full Time Programs</h2>
-                    <div class="feature-list">
-                        <ul class="checked-list">
-                            Supply Chain Management - Global
-                            <li>Web Development</li>
-                            <li>Sustainable Business Management</li>
-                            <li>Teaching English as a Second Language</li>
-                            <li>Technical Communication</li>
-                            <li>Technology Foundations</li>
-                            <li>Tourism - Destinations and Travel Management (Optional Co-op)</li>
-                            <li>Web Development</li>
-                            <li>Welding and Fabrication Technician</li>
-                            <li>Welding Techniques</li>
-                            <li>Woodworking Techniques - CNC</li>
-                            <li>Woodworking Technology (Optional Co-op)</li>
-                        </ul>
-                    </div>
-                    <a class="w3-bar-item w3-button ws-hover-green ws-green w3-block" id="planbox" style="margin-top:20px;font-weight:normal;font-size:18px;padding:12px 40px;border-radius:25px;" href="https://www.conestogac.on.ca/admissions" onclick="ga('send', 'event', 'Videos' , 'LandingMidButton');loginOrBuy();" title="Buy Now">Apply Now!</a>
-                    <br />
-                    <h4>Popular Meals</h4>
-                    <p>coming soon!</p>
-                    <ul class="nav nav-sidebar"></ul>
+            </nav><!-- #site-navigation -->
+        </aside><!-- #secondary -->
+        <main class="site-main" role="main">
+            <div class="container" id="section">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4">
+                            <div class="our_solution_category">
+                                <div class="solution_cards_box">
+                                    <div class="solution_card">
+                                        <div class="hover_color_bubble"></div>
+                                        <div class="so_top_icon">
+                                            <img src="~/Images/pizza.png" class="card-img-top" />
+                                        </div>
+                                        <div class="solu_title">
+                                            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                                        </div>
+                                        <div class="solu_description" style="max-width:320px;">
+                                            @if (item.MealImage == null)
+                                            {
+                                            <div class="con">
+                                                <img src="~/Images/NoImage.jpg" class="card-img-top">
+                                                @if (!signInManager.IsSignedIn(User))
+                                                    {
+                                                <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                                    }
+                                                    else
+                                                    {
+                                                <a asp-action="Details" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                                    }
+                                            </div>
+
+                                            }
+                                            else
+                                            {
+                                            <div class="con">
+                                                <img src="~/ImageForMeals/@item.MealImage" class="card-img-top" height="320">
+                                                @if (!signInManager.IsSignedIn(User))
+                                                    {
+                                                <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+                                                    }
+                                                    else
+                                                    {
+                                                <a asp-action="Details" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
+
+                                                    }
+                                            </div>
+                                            }
+                                            @if (item.Description == null)
+                                            {
+                                            <p class="card-text" style="max-width:320px">The Author hasn't made up thier mine yet for this meal's description. Lets give them some more time &#128521</p>
+                                            }
+                                            else
+                                            {
+                                            <p class="card-text" style="max-width:320px">@item.Description </p>
+                                            }
+                                            @if (!signInManager.IsSignedIn(User))
+                                            {
+
+                                            <a class="detail-btn" asp-controller="Accounts" asp-action="login" asp-route-id="@item.Id">Details</a>
+                                            }
+
+                                            else
+                                            {
+
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="detail-btn">Details</a>
+                                            }
+                                            <br />
+                                            <br />
+                                            <h6>Likes: @Html.DisplayFor(modelItem => item.Likes)</h6>
+                                            <h6>Author Name: @Html.DisplayFor(modelItem => item.AuthorName)</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
                 </div>
 
             </div>
-        </div>
-</aside>
-
-
-<section>
-
-    <div class="container" id="section">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-sm-4">
-                    <div class="our_solution_category">
-                        <div class="solution_cards_box">
-                            <div class="solution_card">
-                                <div class="hover_color_bubble"></div>
-                                <div class="so_top_icon">
-                                    <img src="~/Images/pizza.png" class="card-img-top" />
-                                </div>
-                                <div class="solu_title">
-                                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                                </div>
-                                <div class="solu_description" style="max-width:320px;">
-                                    @if (item.MealImage == null)
-                                    {
-                                        <div class="con">
-                                            <img src="~/Images/NoImage.jpg" class="card-img-top">
-                                            @if (!signInManager.IsSignedIn(User))
-                                            {
-                                                <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
-                                            }
-                                            else
-                                            {
-                                                <a asp-action="Details" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
-                                            }
-                                        </div>
-
-                                    }
-                                    else
-                                    {
-                                        <div class="con">
-                                            <img src="~/ImageForMeals/@item.MealImage" class="card-img-top" height="320">
-                                            @if (!signInManager.IsSignedIn(User))
-                                            {
-                                                <a asp-controller="Accounts" asp-action="login" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
-                                            }
-                                            else
-                                            {
-                                                <a asp-action="Details" asp-route-id="@item.Id" asp-route-changeLikes="true" class="bottom-left"><img src="~/Images/love.png" alt="like_img" width="40" height="40" /></a>
-                                            }
-                                        </div>
-                                    }
-                                    @if (item.Description == null)
-                                    {
-                                        <p class="card-text" style="max-width:320px">The Author hasn't made up thier mind yet for this meal's description. Lets give them some more time &#128521</p>
-                                    }
-                                    else
-                                    {
-                                        <p class="card-text" style="max-width:320px">@item.Description </p>
-                                    }
-                                    @if (!signInManager.IsSignedIn(User))
-                                    {
-
-                                        <a class="detail-btn" asp-controller="Accounts" asp-action="login" asp-route-id="@item.Id" >Details</a>
-                                    }
-
-                                    else
-                                    {
-
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="detail-btn">Details</a>
-                                        <br />
-                                    }
-                                    <br />
-                                    <h6>Likes: @Html.DisplayFor(modelItem => item.Likes)</h6>
-                                    <h6>Author Name: @Html.DisplayFor(modelItem => item.AuthorName)</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            }
-            
-        </div>
-
-    </div>
+        </main><!-- /.site-main -->
+    </div><!-- /.content-area -->
     
-</section>

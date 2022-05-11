@@ -179,11 +179,13 @@ namespace mentionIT.Controllers
             }
             
         }
+
         private string UploadFile(MealViewModel vm)
         {
             string fileName = null;
             if (vm.MealImage != null)
-            {
+            {   
+
                 string uploadDir = Path.Combine(WebHostEnvironment.WebRootPath, "ImageForMeals");
                 fileName = Guid.NewGuid().ToString() + "-" + vm.MealImage.FileName;
                 bool compareExtension = HasImageExtension(fileName) /*stringFileName.ToString().Substring(stringFileName.Length -4).ToUpper()*/;

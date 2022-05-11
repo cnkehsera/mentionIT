@@ -47,21 +47,8 @@ namespace mentionIT.Controllers
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await signInManager.SignInAsync(user, isPersistent: false);
-                    //return RedirectToAction("Login", "Accounts");
-         //           System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
-         //new System.Net.Mail.MailAddress("sender@mydomain.com", "Web Registration"),
-         //new System.Net.Mail.MailAddress(user.Email));
-         //           m.Subject = "Email confirmation";
-         //           m.Body = string.Format("Dear {0} <BR/>Thank you for your registration, please click on the below link to complete your registration: < a href =\"{1}\"title =\"User Email Confirm\">{1}</a>",
-         //    user.UserName, Url.Action("ConfirmEmail", "Account",
-         //    new { Token = user.Id, Email = user.Email }, Request.Scheme)); m.IsBodyHtml = true;
-         //           System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.mydomain.com");
-         //           smtp.Credentials = new System.Net.NetworkCredential("sender@mydomain.com", "password");
-         //           /*smtp.ServerCertificateValidationCallback = () => true;*/ //Solution for client certificate error
-         //           smtp.EnableSsl = true;
-         //           smtp.Send(m);
-         //           return RedirectToAction("Confirm", "Account", new { Email = user.Email });
+                    await signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Login", "Accounts");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -70,29 +57,7 @@ namespace mentionIT.Controllers
             }
             return View(model);
         }
-        [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string Token, string Email)
-        {
-            IdentityUser user = await userManager.FindByIdAsync(Token);
-            if (user != null)
-            {
-                if (user.Email == Email)
-                {
-                    user.EmailConfirmed= true;
-                    await userManager.UpdateAsync(user);
-                    return RedirectToAction("Index", "Home", new { ConfirmedEmail = user.Email });
-                }
-                else
-                {
-                    return RedirectToAction("Confirm", "Account", new { Email = user.Email });
-                }
-            }
-            else
-            {
-                return RedirectToAction("Confirm", "Account", new { Email = "" });
-            }
-        }
-
+        
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login()
@@ -112,7 +77,7 @@ namespace mentionIT.Controllers
                     Response.Cookies.Append("ckiLikes", model.Email, options);
                     return RedirectToAction("Index", "Meals");
                 }
-                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                    ModelState.AddModelError(string.Empty, "Email And or Password Incorrect");
             }
             return View(model);
         }
